@@ -2,7 +2,7 @@ package com.LucasVicentee.dslist.dto;
 
 import com.LucasVicentee.dslist.entities.Game;
 
-public class GameMinDTO {
+public class GameMinDTO { //Versão do Game, porém com os dados que preciso
 
     private Long id;
     private String title;
