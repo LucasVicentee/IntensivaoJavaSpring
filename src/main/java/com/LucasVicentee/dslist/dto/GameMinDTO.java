@@ -1,6 +1,7 @@
 package com.LucasVicentee.dslist.dto;
 
 import com.LucasVicentee.dslist.entities.Game;
+import com.LucasVicentee.dslist.projections.GameMinProjection;
 
 public class GameMinDTO { //Versão do Game, porém com os dados que preciso
 
@@ -20,6 +21,14 @@ public class GameMinDTO { //Versão do Game, porém com os dados que preciso
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         shortDescription = entity.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection projection) { //Pegando a classe Game para puxar os campos usados lá
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
     }
 
     //No DTO se utiliza apenas Getters e nao tem Setters

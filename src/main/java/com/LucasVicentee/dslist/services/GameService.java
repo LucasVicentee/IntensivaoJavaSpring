@@ -3,6 +3,7 @@ package com.LucasVicentee.dslist.services;
 import com.LucasVicentee.dslist.dto.GameDTO;
 import com.LucasVicentee.dslist.dto.GameMinDTO;
 import com.LucasVicentee.dslist.entities.Game;
+import com.LucasVicentee.dslist.projections.GameMinProjection;
 import com.LucasVicentee.dslist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component; //Faz a mesma coisa que o service, basicamente acopla a classe ao projeto do framework
@@ -20,8 +21,7 @@ public class GameService {
     @Transactional(readOnly = true) //Assegura que não vai bloquear o banco para escrita, assim ficando mais rápido
     public List<GameMinDTO> findAll() {
         List<Game> result = gameRepository.findAll();
-        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList(); //Transformando uma lista que era de Game para uma lista de GameMinDTO (Ou seja, apenas aquilo que eu preciso)
-        return dto;
+        return result.stream().map(x -> new GameMinDTO(x)).toList(); //Transformando uma lista que era de Game para uma lista de GameMinDTO (Ou seja, apenas aquilo que eu preciso)
     }
 
     @Transactional(readOnly = true) //Assegura que não vai bloquear o banco para escrita, assim ficando mais rápido
@@ -29,5 +29,11 @@ public class GameService {
         Game result = gameRepository.findById(id).get(); //Pegando o id da classe Game
         GameDTO dto = new GameDTO(result); //Convertendo para GameDTO
         return dto;
+    }
+
+    @Transactional(readOnly = true) //Assegura que não vai bloquear o banco para escrita, assim ficando mais rápido
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
     }
 }
