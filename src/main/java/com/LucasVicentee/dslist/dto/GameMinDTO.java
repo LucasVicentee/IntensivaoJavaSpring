@@ -26,7 +26,7 @@ public class GameMinDTO { //Versão do Game, porém com os dados que preciso
     public GameMinDTO(GameMinProjection projection) { //Pegando a classe Game para puxar os campos usados lá
         id = projection.getId();
         title = projection.getTitle();
-        year = projection.getYear();
+        year = projection.getGameYear();
         imgUrl = projection.getImgUrl();
         shortDescription = projection.getShortDescription();
     }

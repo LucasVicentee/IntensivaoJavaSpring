@@ -1,5 +1,6 @@
 package com.LucasVicentee.dslist.controllers;
 
+import com.LucasVicentee.dslist.dto.GameListDTO;
 import com.LucasVicentee.dslist.dto.GameMinDTO;
 import com.LucasVicentee.dslist.services.GameListService;
 import com.LucasVicentee.dslist.services.GameService;
@@ -20,6 +21,11 @@ public class GameListController {
 
     @Autowired //Injetando service no controller
     private GameService gameService;
+
+    @GetMapping
+    public List<GameListDTO> findAll() {
+        return gameListService.findAll();
+    }
 
     @GetMapping(value = "/{listId}/games") //Mapeando como Get por ser uma consulta no SQL
     public List<GameMinDTO> findByList(@PathVariable Long listId) {
