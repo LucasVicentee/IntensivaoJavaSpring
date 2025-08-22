@@ -20,10 +20,10 @@ public class Game {
     private Double score;
     private String imgUrl;
 
-    @Column(columnDefinition = "TEXT") //Adicionando mais do que 255 caracteres que é o padrão do Sring
+    @Column(columnDefinition = "TEXT") //Adicionando mais do que 255 caracteres que é o padrão do String
     private String shortDescription;
 
-    @Column(columnDefinition = "TEXT") //Adicionando mais do que 255 caracteres que é o padrão do Sring
+    @Column(columnDefinition = "TEXT") //Adicionando mais do que 255 caracteres que é o padrão do String
     private String longDescription;
 
     public Game() {
